@@ -1,0 +1,19 @@
+{
+  "name": "node_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "server-dev": "cd server && npm run dev",   
+    "dev": "concurrently - kill-others \"npm run server-dev\" \"npm run client\"",
+    "start": "concurrently - kill-others \"npm run server\" \"npm run client\""
+  },
+  "author": "Elena Vystavnaya <helenv2909@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
