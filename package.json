@@ -9,7 +9,9 @@
     "server": "cd server && npm start",
     "server-dev": "cd server && npm run dev",
     "dev": "concurrently - kill-others \"npm run server-dev\" \"npm run client\"",
-    "start": "concurrently - kill-others \"npm run server\" \"npm run client\""
+    "start": "concurrently - kill-others \"npm run server\" \"npm run client\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "Elena Vystavnaya <helenv2909@gmail.com>",
   "license": "ISC",
@@ -18,5 +20,6 @@
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
-  }
+  },
+  "homepage": "https://elena-vystavnaya.github.io/node-react/"
 }
