@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/node-react/static/css/main.c8fd69e2.chunk.css",
-    "main.js": "/node-react/static/js/main.6c4633e8.chunk.js",
-    "main.js.map": "/node-react/static/js/main.6c4633e8.chunk.js.map",
+    "main.js": "/node-react/static/js/main.d3cca9cb.chunk.js",
+    "main.js.map": "/node-react/static/js/main.d3cca9cb.chunk.js.map",
     "runtime-main.js": "/node-react/static/js/runtime-main.4ac7d402.js",
     "runtime-main.js.map": "/node-react/static/js/runtime-main.4ac7d402.js.map",
-    "static/css/2.4d98ed14.chunk.css": "/node-react/static/css/2.4d98ed14.chunk.css",
-    "static/js/2.937a4537.chunk.js": "/node-react/static/js/2.937a4537.chunk.js",
-    "static/js/2.937a4537.chunk.js.map": "/node-react/static/js/2.937a4537.chunk.js.map",
+    "static/css/2.45f96635.chunk.css": "/node-react/static/css/2.45f96635.chunk.css",
+    "static/js/2.df0e4814.chunk.js": "/node-react/static/js/2.df0e4814.chunk.js",
+    "static/js/2.df0e4814.chunk.js.map": "/node-react/static/js/2.df0e4814.chunk.js.map",
     "index.html": "/node-react/index.html",
-    "static/css/2.4d98ed14.chunk.css.map": "/node-react/static/css/2.4d98ed14.chunk.css.map",
+    "static/css/2.45f96635.chunk.css.map": "/node-react/static/css/2.45f96635.chunk.css.map",
     "static/css/main.c8fd69e2.chunk.css.map": "/node-react/static/css/main.c8fd69e2.chunk.css.map",
-    "static/js/2.937a4537.chunk.js.LICENSE.txt": "/node-react/static/js/2.937a4537.chunk.js.LICENSE.txt",
+    "static/js/2.df0e4814.chunk.js.LICENSE.txt": "/node-react/static/js/2.df0e4814.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/node-react/static/media/Raleway-SemiBold.a911dc8b.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.4ac7d402.js",
-    "static/css/2.4d98ed14.chunk.css",
-    "static/js/2.937a4537.chunk.js",
+    "static/css/2.45f96635.chunk.css",
+    "static/js/2.df0e4814.chunk.js",
     "static/css/main.c8fd69e2.chunk.css",
-    "static/js/main.6c4633e8.chunk.js"
+    "static/js/main.d3cca9cb.chunk.js"
   ]
 }
