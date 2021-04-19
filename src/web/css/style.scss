@@ -1,3 +1,8 @@
+@import "./typography.scss";
+
+body {
+    font-family: "Raleway";
+}
 .light {
     background: #fff;
     a,
@@ -86,4 +91,28 @@
 }
 .ant-alert {
     margin-bottom: 20px;
+}
+
+.ant-spin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+//card
+.ant-card {
+    //  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 2px 0 rgba(90, 97, 105, 0.11),
+        0 4px 8px rgba(90, 97, 105, 0.12), 0 10px 10px rgba(90, 97, 105, 0.06),
+        0 7px 70px rgba(90, 97, 105, 0.1);
+    border: none;
+    border-radius: 0.625rem;
+}
+.card-user {
+    text-align: center;
+    .ant-avatar {
+        margin-bottom: 15px;
+    }
 }

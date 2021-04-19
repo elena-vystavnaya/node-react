@@ -18,8 +18,6 @@ export default class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         this.setState({ error, info });
-        // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
-        // logErrorToMyService(error, errorInfo);
     }
 
     render() {

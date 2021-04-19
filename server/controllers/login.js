@@ -8,6 +8,7 @@ module.exports = {
             password: req.body.password,
         });
         const findUser = await User.findOne({ email: req.body.email });
+
         const isValidPass =
             findUser && (await user.comparePasswords(findUser.password));
         if (!findUser || !isValidPass) {
