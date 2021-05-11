@@ -116,3 +116,55 @@ body {
         margin-bottom: 15px;
     }
 }
+
+.upload-avatar {
+    // cursor: pointer;
+    // position: relative;
+    // width: 40px;
+    // height: 40px;
+    // margin: -30px auto 0;
+    > input[type="file"] {
+        // cursor: pointer;
+        // opacity: 0;
+        // height: 100%;
+        // z-index: 1;
+        display: none;
+    }
+
+    > button {
+        position: absolute;
+        left: 0;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        margin: -30px auto 0;
+        border-radius: 50%;
+        border: 1px solid#1890ff;
+        color: #ffffff;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+        background: #1890ff;
+        font-size: 18px;
+        transition: all 0.5s;
+        &:hover,
+        &:focus {
+            color: #fff;
+            background: #40a9ff;
+            border-color: #40a9ff;
+        }
+    }
+
+    &:hover {
+        > button {
+            color: #fff;
+            background: #40a9ff;
+            border-color: #40a9ff;
+        }
+    }
+}

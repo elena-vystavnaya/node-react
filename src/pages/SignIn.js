@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Input, Button } from "antd";
 import { usePost } from "../hooks/usePost";
 import { validateMessages } from "../constants/validateMessages";
 import { useHistory } from "react-router-dom";
+import { CurrentUserContext } from "../reducers/currentUserContext";
 
 const SignIn = () => {
     const history = useHistory();
@@ -10,6 +11,7 @@ const SignIn = () => {
         email: null,
         password: null,
     });
+    const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
 
     const postData = usePost("login");
 
@@ -20,6 +22,7 @@ const SignIn = () => {
             },
         });
         if (response) {
+            setCurrentUser(response);
             localStorage.setItem("token", response.token);
             history.push("/");
         }

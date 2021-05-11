@@ -2,7 +2,7 @@ import React from "react";
 
 import { Row, Col, Badge } from "antd";
 
-const About = (props) => {
+const Users = (props) => {
     let { users } = props;
 
     return (
@@ -28,4 +28,4 @@ const About = (props) => {
     );
 };
 
-export default About;
+export default Users;

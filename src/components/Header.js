@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Dropdown, Menu, Switch, Button } from "antd";
-import axios from "axios";
+import { Dropdown, Menu, Switch, Button, Spin } from "antd";
 import {
     DownOutlined,
     UserOutlined,
@@ -9,34 +8,23 @@ import {
     FileOutlined,
     LogoutOutlined,
 } from "@ant-design/icons";
+import { useQuery } from "../hooks/useQuery";
+import { CurrentUserContext } from "../reducers/currentUserContext";
 
 const Header = (props) => {
+    const { data, loading } = useQuery("user");
     const history = useHistory();
     const { title, theme, onChangeTheme } = props;
-    const [user, setUser] = useState(null);
-
+    const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
     const logOut = () => {
         localStorage.removeItem("token");
-        setUser(null);
+        setCurrentUser(null);
         history.push("/login");
     };
 
-    const token = localStorage.getItem("token");
     useEffect(() => {
-        async function fetchData() {
-            if (token) {
-                const response = await axios.get(
-                    "http://localhost:8000/api/user"
-                );
-                if (response.data) {
-                    setUser({
-                        ...response.data,
-                    });
-                }
-            }
-        }
-        fetchData();
-    }, [token]);
+        setCurrentUser({ ...data });
+    }, [data]);
 
     const menu = (
         <Menu>
@@ -71,10 +59,14 @@ const Header = (props) => {
             <h1>{title}</h1>
             <div>
                 <Switch checked={theme} onChange={onChangeTheme} />
-                {user ? (
+                {currentUser ? (
                     <Dropdown overlay={menu} trigger={["click"]}>
                         <Button onClick={(e) => e.preventDefault()}>
-                            {user.username}
+                            {loading ? (
+                                <Spin size='small' />
+                            ) : (
+                                currentUser.username
+                            )}
                             <DownOutlined />
                         </Button>
                     </Dropdown>

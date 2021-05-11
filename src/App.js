@@ -6,30 +6,23 @@ import { Layout } from "antd";
 import Header from "./components/Header";
 import Sider from "./components/Sider";
 
-import About from "./pages/About";
+import Users from "./pages/Users";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { Page } from "./components/Page";
 
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "./reducers";
 import ErrorBoundary from "./utils/ErrorBoundary";
 import { PrivateRoute } from "./utils/PrivateRoute";
-
+import { CurrentUserContext } from "./reducers/currentUserContext";
 import { useChat } from "./hooks/useChat";
 
-const store = createStore(rootReducer, composeWithDevTools());
-
-// store.subscribe();
 const App = () => {
     const [title, setTitle] = useState("");
     const [theme, setTheme] = useState(true);
     const { users } = useChat("room");
-
+    const [currentUser, setCurrentUser] = useState(null);
     const onChangeTheme = () => {
         setTheme(!theme);
     };
@@ -46,9 +39,9 @@ const App = () => {
             title: "Profile",
         },
         {
-            component: <About users={users} />,
-            path: "/about",
-            title: "About",
+            component: <Users users={users} />,
+            path: "/users",
+            title: "Users",
         },
     ];
     const staticRoutes = [
@@ -71,7 +64,7 @@ const App = () => {
     });
 
     return (
-        <Provider store={store}>
+        <CurrentUserContext.Provider value={[currentUser, setCurrentUser]}>
             <Router>
                 <Layout className={theme ? "light" : "dark"}>
                     <Layout.Sider breakpoint='xxl'>
@@ -123,7 +116,7 @@ const App = () => {
                     </Layout>
                 </Layout>
             </Router>
-        </Provider>
+        </CurrentUserContext.Provider>
     );
 };
 

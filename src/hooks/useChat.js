@@ -1,24 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
-import axios from "axios";
-
 import { useBeforeUnload } from "./useBeforeUnload";
-
-const SERVER_URL = "http://localhost:8000/";
+import axios from "axios";
+import { SERVER_URL, RESPONSE_API } from "../constants/urls";
 
 export const useChat = (roomId) => {
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState(null);
-
     const socketRef = useRef(null);
     const token = localStorage.getItem("token");
 
     useEffect(() => {
         async function fetchData() {
             if (token) {
-                const response = await axios.get(
-                    "http://localhost:8000/api/user"
-                );
+                const response = await axios.get(`${RESPONSE_API}/user`);
                 if (response.data) {
                     setUser(response.data);
                     localStorage.setItem("userId", response.data.id);
