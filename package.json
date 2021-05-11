@@ -38,7 +38,8 @@
     "dev": "concurrently - kill-others \"npm run server-dev\" \"react-scripts start\"",
     "start": "concurrently - kill-others \"npm run server\" \"react-scripts start\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "heroku-postbuild": "npm install && npm run build"
   },
   "eslintConfig": {
     "rules": {
