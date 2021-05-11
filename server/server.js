@@ -30,23 +30,40 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./models/index");
 const PORT = process.env.PORT || 8000;
 
-httpServer.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV == "production") {
+    app.use(function (req, res, next) {
+        res.setHeader(
+            "Strict-Transport-Security",
+            "max-age=8640000; includeSubDomains"
+        );
+        if (
+            req.headers["x-forwarded-proto"] &&
+            req.headers["x-forwarded-proto"] === "http"
+        ) {
+            return res.redirect(301, "https://" + req.host + req.url);
+        } else {
+            return next();
+        }
+    });
+} else {
+    httpServer.listen(PORT, () => {
+        console.log(`Example app listening at http://localhost:${PORT}`);
+    });
+
+    app.use((req, res, next) => {
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+        res.header(
+            "Access-Control-Allow-Headers",
+            "Origin, X-Requested-With, Content-Type, Accept"
+        );
+        res.removeHeader("X-Powered-By");
+        res.header("Access-Control-Allow-Methods", "GET, POST, DELETE");
+        next();
+    });
+}
 
 const cors = require("cors");
 app.use(cors());
-
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", req.headers.origin);
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.removeHeader("X-Powered-By");
-    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE");
-    next();
-});
 
 //connect database
 const uri =
