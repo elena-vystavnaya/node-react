@@ -11,6 +11,7 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.1",
     "express-unless": "^0.5.0",
     "jsonwebtoken": "^8.5.1",
@@ -30,13 +31,13 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "env-cmd -f .env.production  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "cd server && node server.js",
     "server-dev": "cd server && nodemon server.js",
-    "dev": "concurrently - kill-others \"npm run server-dev\" \"react-scripts start\"",
-    "start": "concurrently - kill-others \"npm run server\" \"react-scripts start\"",
+    "dev": "concurrently - kill-others \"npm run server-dev\" \"env-cmd -f .env.development react-scripts start\"",
+    "start": "concurrently - kill-others \"npm run server\" \"env-cmd -f .env.development react-scripts start\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "heroku-postbuild": "npm install && npm run build"

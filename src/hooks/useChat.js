@@ -13,7 +13,7 @@ export const useChat = (roomId) => {
     useEffect(() => {
         async function fetchData() {
             if (token) {
-                const response = await axios.get(`${RESPONSE_API}/user`);
+                const response = await axios.get(`${RESPONSE_API}user`);
                 if (response.data) {
                     setUser(response.data);
                     localStorage.setItem("userId", response.data.id);
